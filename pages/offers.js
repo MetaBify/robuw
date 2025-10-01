@@ -56,20 +56,31 @@ export default function Offers() {
     <div>
       <div id="header-placeholder"></div>
 
-      <main style={{ maxWidth: 1200, margin: '100px auto 40px', padding: '0 16px' }}>
-        <h1 style={{ color: '#00d4ff', textShadow: '0 0 10px #8b3cff', textAlign: 'center' }}>
+      <main style={{ maxWidth: 1200, margin: '80px auto 40px', padding: '0 16px' }}>
+        {/* Title */}
+        <h1
+          style={{
+            color: '#00d4ff',
+            textShadow: '0 0 12px #8b3cff',
+            textAlign: 'center',
+            marginBottom: 8,
+            fontSize: 32,
+          }}
+        >
           Available Offers
         </h1>
-        <p style={{ color: '#8b3cff', textAlign: 'center', marginBottom: 24 }}>
-          Complete offers to earn Robux
+        <p style={{ color: '#8b3cff', textAlign: 'center', marginBottom: 24, fontSize: 16 }}>
+          Complete these offers to earn Robux!
         </p>
 
+        {/* Offers Grid */}
         <div
           id="offersGrid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gridTemplateColumns: 'repeat(5, 1fr)', // desktop: 5 per row
             gap: '20px',
+            justifyItems: 'stretch',
           }}
         >
           {currentOffers.map((o) => (
@@ -93,7 +104,14 @@ export default function Offers() {
                 onError={(e) => (e.target.src = '/images/robux.png')}
               />
               <h3 style={{ color: '#00c3ff', textAlign: 'center', marginBottom: 6 }}>{o.name}</h3>
-              <p style={{ color: '#8b3cff', textAlign: 'center', fontSize: 14, marginBottom: 12 }}>
+              <p
+                style={{
+                  color: '#8b3cff',
+                  textAlign: 'center',
+                  fontSize: 14,
+                  marginBottom: 12,
+                }}
+              >
                 {o.anchor || o.conversion}
               </p>
               <div
@@ -108,7 +126,9 @@ export default function Offers() {
                 }}
               >
                 <img src="/images/robux.png" alt="Robux" style={{ width: 20, height: 20 }} />
-                <span style={{ color: '#f5f6fa', fontWeight: 500 }}>{formatRobux(o.user_payout)} Robux</span>
+                <span style={{ color: '#f5f6fa', fontWeight: 500 }}>
+                  {formatRobux(o.user_payout)} Robux
+                </span>
               </div>
               <button
                 onClick={() => handleClaim(o)}
@@ -128,8 +148,9 @@ export default function Offers() {
           ))}
         </div>
 
+        {/* Load More */}
         {currentOffers.length < offers.length && (
-          <div style={{ textAlign: 'center', marginTop: 24 }}>
+          <div style={{ textAlign: 'center', marginTop: 32 }}>
             <button
               onClick={() => setPage((p) => p + 1)}
               style={{
@@ -142,11 +163,31 @@ export default function Offers() {
                 cursor: 'pointer',
               }}
             >
-              Load more
+              Load More Offers
             </button>
           </div>
         )}
       </main>
+
+      {/* Responsive CSS */}
+      <style jsx>{`
+        @media (max-width: 1200px) {
+          #offersGrid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+        @media (max-width: 768px) {
+          #offersGrid {
+            display: flex;
+            overflow-x: auto;
+            gap: 12px;
+            padding: 0 12px;
+          }
+          #offersGrid .card {
+            flex: 0 0 80%;
+          }
+        }
+      `}</style>
     </div>
   )
 }
