@@ -1,0 +1,19 @@
+{
+  "name": "robuxw",
+  "version": "1.0.0",
+  "description": "Robuxw site with a Next.js API proxy for Roblox calls (ready for Vercel)",
+  "main": "server.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "serve-local": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
