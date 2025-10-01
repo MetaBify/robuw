@@ -35,17 +35,14 @@ export default function Home() {
           textAlign: 'center',
         }}
       >
-        <h1 style={{ color: '#00d4ff', textShadow: '0 0 10px #8b3cff' }}>
+        <h1 style={{ color: '#00d4ff', textShadow: '0 0 10px #8b3cff', marginBottom: '40px' }}>
           Welcome
         </h1>
-        <p style={{ color: '#8b3cff' }}>Home page - static design preserved</p>
 
-        {/* New button */}
         <button
           onClick={() => router.push('/offers')}
           style={{
-            marginTop: '20px',
-            padding: '12px 18px',
+            padding: '12px 24px',
             borderRadius: '10px',
             border: 'none',
             background: '#00c3ff',
