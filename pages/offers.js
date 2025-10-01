@@ -80,7 +80,6 @@ export default function Offers() {
             display: 'grid',
             gridTemplateColumns: 'repeat(5, 1fr)', // desktop: 5 per row
             gap: '20px',
-            justifyItems: 'stretch',
           }}
         >
           {currentOffers.map((o) => (
@@ -191,3 +190,4 @@ export default function Offers() {
     </div>
   )
 }
+
