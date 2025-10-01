@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let cache = { data: null, ts: 0 };
-const CACHE_TTL = 60 * 5 * 1000; // 5 minutes
+const CACHE_TTL = 0; // disables cache
 
 export default async function handler(req, res) {
   const feedUrl = 'https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=623910&api_key=525aedb31fa76c26997f25d2b15e501f&s1=&s2=';
@@ -19,3 +19,4 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'feed_unavailable' });
   }
 }
+
